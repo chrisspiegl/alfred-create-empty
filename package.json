@@ -1,6 +1,6 @@
 {
   "name": "alfred-create-empty",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Alfred workflow to create empty folders and files based on clipboard content",
   "type": "module",
   "main": "index.js",
