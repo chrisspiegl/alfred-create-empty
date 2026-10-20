@@ -10,7 +10,14 @@
     "url": "https://chrisspiegl.com/"
   },
   "license": "MIT",
-  "repository": "chrisspiegl/alfred-create-empty",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chrisspiegl/alfred-create-empty.git"
+  },
+  "bugs": {
+    "url": "https://github.com/chrisspiegl/alfred-create-empty/issues"
+  },
+  "homepage": "https://github.com/chrisspiegl/alfred-create-empty#readme",
   "keywords": [
     "alfred",
     "workflow",
