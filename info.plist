@@ -90,7 +90,11 @@
 	<key>createdby</key>
 	<string>Chris Spiegl</string>
 	<key>description</key>
-	<string></string>
+	<string>Create empty files and folders from clipboard names</string>
+	<key>version</key>
+	<string>0.0.1</string>
+	<key>webaddress</key>
+	<string>https://github.com/chrisspiegl/alfred-create-empty</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
@@ -139,7 +143,7 @@
 			<key>config</key>
 			<dict>
 				<key>concurrently</key>
-				<true/>
+				<false/>
 				<key>escaping</key>
 				<integer>126</integer>
 				<key>script</key>
@@ -203,7 +207,7 @@
 			<key>config</key>
 			<dict>
 				<key>concurrently</key>
-				<true/>
+				<false/>
 				<key>escaping</key>
 				<integer>126</integer>
 				<key>script</key>
@@ -261,9 +265,9 @@
 		</dict>
 	</array>
 	<key>readme</key>
-	<string>Alfred workflow to to flatten a folder and it's contents
+	<string>Create empty files and folders from a list of names on the clipboard, one name per line. Choose a file or folder in Alfred and run Create Files or Create Folders. Existing files are left unchanged. Names that are absolute or contain .. are rejected.
 
-https://github.com/chrisspiegl/alfred-flatten-folder</string>
+https://github.com/chrisspiegl/alfred-create-empty</string>
 	<key>uidata</key>
 	<dict>
 		<key>1D2BA331-A6CA-40A4-A1EE-4EAD6B5B4F5B</key>

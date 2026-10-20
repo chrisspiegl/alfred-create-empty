@@ -1,9 +1,15 @@
-import hasFlag from 'has-flag';
-import {createFolders} from './src/create-folders.js';
-import {createFiles} from './src/create-files.js';
+import process from 'node:process'
+import alfy from 'alfy'
+import hasFlag from 'has-flag'
+import { createFiles } from './src/create-files.js'
+import { createFolders } from './src/create-folders.js'
 
-if (hasFlag('folders')) {
-	createFolders();
-} else if (hasFlag('files')) {
-	createFiles();
+const options = {
+  target: alfy.input,
+  filenames: process.env.filenames,
 }
+
+if (hasFlag('folders'))
+  createFolders(options)
+else if (hasFlag('files'))
+  createFiles(options)

@@ -1,26 +1,34 @@
-import process from 'node:process';
-import fs from 'node:fs';
-import path from 'node:path';
-import alfy from 'alfy';
+/* eslint-disable no-console -- Run Script stdout is the progress Alfred displays. */
+import fs from 'node:fs'
+import path from 'node:path'
+import { assertSafeName, parseFilenames, resolveParentDirectory } from './names.js'
 
-export function createFiles() {
-	const time = new Date();
-	let folder = alfy.input;
-	const names = process.env.filenames?.split('\n').map(element => element.trim()).filter(element => Boolean(element));
+export function createFiles({ target, filenames }) {
+  const names = parseFilenames(filenames)
+  for (const name of names)
+    assertSafeName(name)
 
-	const stat = fs.lstatSync(folder);
-	if (stat.isFile()) {
-		folder = path.dirname(folder);
-	}
+  const folder = resolveParentDirectory(target)
 
-	for (const name of names) {
-		const filepath = path.join(folder, name);
-		console.log(`Creating: ${filepath}`);
-		try {
-			fs.utimesSync(filepath, time, time);
-		} catch {
-			fs.closeSync(fs.openSync(filepath, 'w'));
-		}
-	}
+  for (const name of names) {
+    const filepath = path.join(folder, name)
+    if (fs.existsSync(filepath)) {
+      console.log(`Exists: ${filepath}`)
+      continue
+    }
+
+    console.log(`Creating: ${filepath}`)
+    try {
+      const fileDescriptor = fs.openSync(filepath, 'wx')
+      fs.closeSync(fileDescriptor)
+    }
+    catch (error) {
+      if (error?.code === 'EEXIST') {
+        console.log(`Exists: ${filepath}`)
+        continue
+      }
+
+      throw error
+    }
+  }
 }
-
